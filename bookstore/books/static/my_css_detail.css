@@ -1,0 +1,52 @@
+.container-detail {
+    margin-left: 3rem;
+    background-color: rgb(255, 255, 255);
+    max-width: 50%;
+    min-height: 1080px;
+    display:block;
+    
+}
+
+.image {
+    width: 230px;
+    height: 200px;
+}
+
+.title {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: rgb(20, 18, 18);
+    margin-left: 3rem;
+    font-size: 25px;
+
+}
+p {
+    color: rgb(26, 22, 22);
+    margin-left: 3rem;
+    font-size: 24px;
+}
+.container-fluid {
+    color: 122, 109, 109;
+    font-size: 27px;
+}
+.nav-back {
+    color: rgb(122, 109, 109);
+    font-size: 27px;
+    
+}
+.nav-create {
+    color: rgb(122, 109, 109);
+    font-size: 27px;
+     
+}
+.nav-item-back {
+    margin-right: 10px;
+}
+.nav-item-create {
+    margin-left: 10px;
+}
+
+.navbar-brand {
+    color: rgb(122, 109, 109);
+    font-size: 30px;
+}

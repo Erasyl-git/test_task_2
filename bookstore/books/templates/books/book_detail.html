@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "my_css_detail.css" %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>{{book_detail.title}}</title>
+</head>
+<body style="background-color: aquamarine;">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item-back">
+                <a class="nav-back active" aria-current="page" href="{% url 'book_list' %}">Вернуться назад</a>
+              </li>
+              <li class="nav-item-create">
+                <a class="nav-create" href="{% url 'book_add' %}">Создать книгу</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search" action="{% url 'search_books' %}" method="GET">
+                <input class="form-control me-2" type="search" name="query" placeholder="Поиск по названию книги" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Поиск</button>
+              </form>
+          </div>
+        </div>
+      </nav>
+    <div class="container-detail">
+        {% if not search_results %}
+        {% if book_detail.image %}
+        <img class="image" src="{{ book_detail.image.url }}" alt="{{ book_detail.title }}">
+        {% endif %}
+        <h1 class="title"><strong>Название книги: </strong>{{ book_detail.title }}</h1>
+        <p><strong>Автор: </strong> {{ book_detail.author }}</p>
+        <p><strong>Дата публикации: </strong> {{ book_detail.published_date }}</p>
+        <p><strong>Описание: </strong> {{ book_detail.content }}</p>
+        {% endif %}
+    
+        <!-- Если есть результаты поиска, отображаем их -->
+        {% if search_results %}
+        <div class="search-results">
+            <h2>Результаты поиска</h2>
+            <ul>
+                {% for result in search_results %}
+                {% if result.image %}
+                <img class="image" src="{{ result.image.url }}" alt="{{ book_detail.title }}">
+                {% endif %}
+                <h3><strong>Название книги: </strong>{{ result.title }}</h3>
+                <p><strong>Автор: </strong> {{ result.author }}</p>
+                <p><strong>Дата публикации: </strong> {{ result.published_date }}</p>
+                <p><strong>Описание: </strong> {{ result.content }}</p>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

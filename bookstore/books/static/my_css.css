@@ -1,0 +1,45 @@
+.container-list {
+    margin-left: 3rem;
+    background-color: rgb(255, 255, 255);
+    max-width: 50%;
+    min-height: 1080px;
+    display:block;
+    
+
+}
+.title {
+    color: rgb(27, 24, 24);
+}
+.class-ul {
+    list-style-type: none;
+}
+
+.tag-a {
+    color: rgb(24, 19, 19);
+    font-size: 24px
+}
+
+.navbar-brand {
+    color: rgb(122, 109, 109);
+    font-size: 30px;
+}
+.nav-create {
+    color: rgb(122, 109, 109);
+    font-size: 27px;
+}
+
+.nav-back {
+    color: rgb(122, 109, 109);
+    font-size: 27px;
+}
+
+.image {
+    width: 230px;
+    height: 200px;
+
+}
+.container-fluid {
+    color: 122, 109, 109;
+    font-size: 27px;
+}
+
