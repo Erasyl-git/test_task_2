@@ -1,10 +1,12 @@
-from django.views.generic import ListView, DetailView, CreateView
-from .models import BooksModel
-from django.shortcuts import get_object_or_404, render
 from typing import Union
+
+from django.views.generic import ListView, DetailView, CreateView
+from django.shortcuts import get_object_or_404, render
 from django.http import HttpRequest
-from .forms import CreateBookForm
 from django.urls import reverse_lazy
+
+from .models import BooksModel
+from .forms import CreateBookForm
 
 
 #выводим список данных с базы данных
@@ -21,13 +23,14 @@ class BookDetailView(DetailView):
     queryset = BooksModel.objects.all()
 
     #используются аннотации чтобы понять что каждый аргумент в себе принимает
-    def get(self, request:HttpRequest, pk:int) -> Union[str, int]:
+    def get(self:str, request:HttpRequest, pk:int) -> Union[str, int]:
         #получаем книгу по первичному ключу, в ином случае возвращаем 404
         book = get_object_or_404(self.queryset, pk=pk)
 
         #рендер шаблона с подробной информации о книге
         return render(request, 'books/book_detail.html', 
                       {'book_detail': book})
+
 
 #добавление книги
 class BookAddView(CreateView):
